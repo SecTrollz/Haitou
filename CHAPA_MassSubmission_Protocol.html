@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CHAPA – Mass Submission Protocol</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@700&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f4f0e8;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    color: #1a1a1a;
+    line-height: 1.8;
+    padding: 40px 20px;
+  }
+  .page {
+    max-width: 860px;
+    margin: 0 auto 60px auto;
+    background: #fdfaf4;
+    border: 1px solid #d4c9b0;
+    padding: 60px 70px;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+  }
+  .doc-header {
+    text-align: center;
+    border-bottom: 3px double #8b7355;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .doc-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #8b7355; margin-bottom: 6px; }
+  .doc-title { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; line-height: 1.4; }
+  .doc-sub { font-style: italic; font-size: 13px; color: #666; margin-top: 6px; }
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    border-left: 4px solid #8b7355;
+    padding-left: 12px;
+    margin: 36px 0 16px 0;
+    letter-spacing: 0.3px;
+  }
+  h3 { font-size: 14px; font-weight: 600; margin: 24px 0 10px 0; color: #444; text-transform: uppercase; letter-spacing: 1px; }
+  p { margin: 0 0 14px 0; font-size: 15px; }
+  .target-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 28px 0;
+    font-size: 13.5px;
+  }
+  .target-table thead tr { background: #2c3e50; color: #fff; }
+  .target-table thead th { padding: 10px 12px; text-align: left; font-size: 12px; text-transform: uppercase; font-weight: 600; }
+  .target-table tbody tr { border-bottom: 1px solid #e0d8c8; }
+  .target-table tbody tr:nth-child(even) { background: #f7f4ee; }
+  .target-table td { padding: 9px 12px; vertical-align: top; }
+  .priority-1 { border-left: 3px solid #8b1a1a; }
+  .priority-2 { border-left: 3px solid #8b7355; }
+  .priority-3 { border-left: 3px solid #2c5f2e; }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+  .badge-red { background: #8b1a1a; color: #fff; }
+  .badge-gold { background: #8b7355; color: #fff; }
+  .badge-green { background: #2c5f2e; color: #fff; }
+  .fax-cover {
+    border: 2px solid #2c3e50;
+    padding: 28px 32px;
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 2;
+  }
+  .fax-header {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .fax-field { margin: 8px 0; }
+  .fax-label { font-weight: 600; display: inline-block; width: 120px; }
+  .fax-body {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 16px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .log-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 16px 0;
+  }
+  .log-table thead tr { background: #2c3e50; color: #fff; }
+  .log-table thead th { padding: 8px 10px; text-align: left; font-size: 11px; text-transform: uppercase; }
+  .log-table tbody tr { border-bottom: 1px solid #e0d8c8; }
+  .log-table td { padding: 8px 10px; }
+  .log-table td input-placeholder { color: #aaa; font-style: italic; }
+  .sequence-block {
+    background: #f0ebe0;
+    border: 1px solid #d4c9b0;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .day-label {
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8b7355;
+    margin-bottom: 8px;
+  }
+  .action-item { margin: 6px 0 6px 16px; font-size: 14px; }
+  .action-item::before { content: "→ "; color: #8b7355; }
+  .note-box {
+    background: #fff8f0;
+    border-left: 4px solid #d4a96a;
+    padding: 14px 18px;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .foia-template {
+    background: #f7f4ee;
+    border: 1px solid #d4c9b0;
+    padding: 20px 24px;
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 1.9;
+    font-style: italic;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; padding: 0.5in 0.7in; margin-bottom: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- DOCUMENT 1: TARGETING STRATEGY -->
+<div class="page">
+  <div class="doc-header">
+    <div class="doc-label">Operational Protocol · Citizen's Hardware &amp; Airspace Protection Act</div>
+    <div class="doc-title">MASS SUBMISSION PROTOCOL</div>
+    <div class="doc-sub">Targeting list · Fax cover sheet · Submission log · 30-day follow-up sequence · FOIA template</div>
+  </div>
+
+  <h2>PART 1 — TARGET SELECTION STRATEGY</h2>
+
+  <p>Simultaneous submission to every member of Congress is quantity without precision. The pressure strategy with maximum return focuses on three tiers: members with direct jurisdictional standing, members with documented public positions aligned with this bill, and members representing competitive districts where constituent pressure has disproportionate leverage.</p>
+
+  <h3>Tier 1 — Jurisdictional Primary Targets (submit Day 1)</h3>
+  <p>These members sit on the exact committees with referral authority over this bill. A citizen petition submitted to a member who can move it in committee is exponentially more effective than one submitted to a member who cannot.</p>
+
+  <table class="target-table">
+    <thead>
+      <tr>
+        <th>Member</th>
+        <th>Chamber</th>
+        <th>Relevant Committee / Role</th>
+        <th>Why This Bill Lands</th>
+        <th>Fax</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="priority-1">
+        <td><strong>Sen. Ben Ray Luján (NM)</strong></td>
+        <td>Senate</td>
+        <td>Commerce Subcommittee on Communications — Ranking Member</td>
+        <td>Direct jurisdiction; rural broadband overlap (§9); up for re-election 2026</td>
+        <td>202-224-1672</td>
+      </tr>
+      <tr class="priority-1">
+        <td><strong>Sen. Maria Cantwell (WA)</strong></td>
+        <td>Senate</td>
+        <td>Senate Commerce Committee — Ranking Member</td>
+        <td>Full committee jurisdiction; tech privacy focus; strong consumer protection record</td>
+        <td>202-228-0514</td>
+      </tr>
+      <tr class="priority-1">
+        <td><strong>Rep. Jerry Nadler (NY)</strong></td>
+        <td>House</td>
+        <td>House Judiciary — Ranking Member</td>
+        <td>FISA reform jurisdiction; long record on Fourth Amendment issues</td>
+        <td>202-225-6923</td>
+      </tr>
+      <tr class="priority-1">
+        <td><strong>Rep. Andy Biggs (AZ)</strong></td>
+        <td>House</td>
+        <td>House Judiciary</td>
+        <td>Author of Fourth Amendment Restoration Act (H.R.117) — direct alignment; will move</td>
+        <td>202-225-2615</td>
+      </tr>
+      <tr class="priority-1">
+        <td><strong>Sen. Ron Wyden (OR)</strong></td>
+        <td>Senate</td>
+        <td>Senate Finance; Intelligence</td>
+        <td>Co-authored data broker warrant bills; authored USA RIGHTS Act; will recognize this immediately</td>
+        <td>202-228-2717</td>
+      </tr>
+      <tr class="priority-1">
+        <td><strong>Sen. Mike Lee (UT)</strong></td>
+        <td>Senate</td>
+        <td>Senate Judiciary</td>
+        <td>Voted against 702 reauth without reforms; Fourth Amendment framing resonates</td>
+        <td>202-228-1168</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Tier 2 — Documented Public Alignment (submit Day 1, same batch)</h3>
+
+  <table class="target-table">
+    <thead>
+      <tr>
+        <th>Member</th>
+        <th>Documented Position</th>
+        <th>Fax</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="priority-2">
+        <td><strong>Rep. Warren Davidson (OH)</strong></td>
+        <td>Voted against 702 reauth; authored crypto privacy bills</td>
+        <td>202-225-6754</td>
+      </tr>
+      <tr class="priority-2">
+        <td><strong>Rep. Zoe Lofgren (CA)</strong></td>
+        <td>Led House effort to add warrant requirement to 702 reauth; Silicon Valley district</td>
+        <td>202-225-3520</td>
+      </tr>
+      <tr class="priority-2">
+        <td><strong>Sen. Rand Paul (KY)</strong></td>
+        <td>Filibustered PATRIOT Act; consistent Fourth Amendment absolutist; will co-sponsor FISA repeal</td>
+        <td>202-228-1373</td>
+      </tr>
+      <tr class="priority-2">
+        <td><strong>Rep. Thomas Massie (KY)</strong></td>
+        <td>Liberty caucus; consistent surveillance critic; voted against 702 reauth</td>
+        <td>202-225-0003</td>
+      </tr>
+      <tr class="priority-2">
+        <td><strong>Sen. Elizabeth Warren (MA)</strong></td>
+        <td>Authored data broker legislation; FTC enforcement advocate; data rights framing</td>
+        <td>202-228-2072</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Tier 3 — Pressure Targets in Competitive Districts (submit Day 3)</h3>
+  <p>These members represent swing districts where 73% voter support for surveillance reform is a liability if they ignore the petition. Submit after Tier 1 and 2 are logged — so the pressure leaderboard has visible entries when these offices receive the submission.</p>
+
+  <div class="note-box">
+    <strong>Targeting note:</strong> The House Judiciary Subcommittee on Crime and Federal Government Surveillance has direct referral authority over Sections 1–3, 6, 8, 10, and 11. The House Energy &amp; Commerce Subcommittee on Communications has referral authority over Sections 5, 7, 9, and 11(d). Dual referral is strategically advantageous — it creates two committee pressure points and two sets of members who can champion the bill. Address Tier 3 submissions to both subcommittee chairs simultaneously.
+  </div>
+</div>
+
+<!-- DOCUMENT 2: FAX COVER SHEET -->
+<div class="page">
+  <div class="doc-header">
+    <div class="doc-label">Exhibit B · Mass Submission Protocol</div>
+    <div class="doc-title">STANDARD FAX COVER SHEET</div>
+    <div class="doc-sub">Use for all submissions · Fill bracketed fields before sending · One cover sheet per office</div>
+  </div>
+
+  <div class="fax-cover">
+    <div class="fax-header">Official Citizen Petition — Do Not Discard</div>
+
+    <div class="fax-field"><span class="fax-label">TO:</span> Legislative Correspondent, Office of [Member Name]</div>
+    <div class="fax-field"><span class="fax-label">FAX:</span> [Member Fax Number]</div>
+    <div class="fax-field"><span class="fax-label">FROM:</span> [Your Name], [City, State, ZIP]</div>
+    <div class="fax-field"><span class="fax-label">DATE:</span> [Submission Date]</div>
+    <div class="fax-field"><span class="fax-label">RE:</span> Citizen Petition — The Citizen's Hardware &amp; Airspace Protection Act</div>
+    <div class="fax-field"><span class="fax-label">PAGES:</span> [Total pages including this sheet]</div>
+    <div class="fax-field"><span class="fax-label">LOG REF:</span> CHAPA-2026-[Your 3-digit submission number]</div>
+
+    <div class="fax-body">
+      <p>This transmission constitutes a formal citizen petition submitted under the First Amendment to the Constitution of the United States, Article I, and applicable Senate and House petition acceptance rules.</p>
+
+      <p>The attached documents are: (1) Cover letter addressed to the Legislative Correspondent; (2) Full bill text — 11 sections, definitions, severability, effective date, constitutional authority statement; (3) Exhibit A — Loophole closure map, 15 documented surveillance birdies with legal citations; (4) Signature gallery — 1,200 registered voters.</p>
+
+      <p><strong>Response requested within 30 days.</strong> This petition has been submitted simultaneously to [X] Members of Congress. Responses and non-responses will be logged in a public-facing petition tracker. A FOIA request for this office's petition log will be filed 60 days from this date if no response is received.</p>
+
+      <p>This petition is on the public record from the moment of transmission.</p>
+
+      <p style="margin-top:20px; font-style:italic;">Submitted by: [Your Name] · [Phone] · [Email] · [Address]</p>
+    </div>
+  </div>
+</div>
+
+<!-- DOCUMENT 3: SUBMISSION LOG -->
+<div class="page">
+  <div class="doc-header">
+    <div class="doc-label">Exhibit C · Mass Submission Protocol</div>
+    <div class="doc-title">SUBMISSION LOG</div>
+    <div class="doc-sub">Complete one row per office at time of submission · This log is your FOIA foundation</div>
+  </div>
+
+  <p>Keep this log current from Day 1. It is the evidentiary record for your FOIA request and your public-facing leaderboard. Every row that stays blank under "Response Received" is a data point.</p>
+
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>Log Ref #</th>
+        <th>Member / Office</th>
+        <th>Tier</th>
+        <th>Fax Sent</th>
+        <th>Mail Sent</th>
+        <th>Web Form</th>
+        <th>Date Submitted</th>
+        <th>Response Received</th>
+        <th>Response Type</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CHAPA-2026-001</td>
+        <td>Sen. Luján (NM)</td>
+        <td><span class="badge badge-red">1</span></td>
+        <td>✓</td><td>✓</td><td>✓</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>CHAPA-2026-002</td>
+        <td>Sen. Cantwell (WA)</td>
+        <td><span class="badge badge-red">1</span></td>
+        <td>✓</td><td>✓</td><td>✓</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>CHAPA-2026-003</td>
+        <td>Rep. Biggs (AZ)</td>
+        <td><span class="badge badge-red">1</span></td>
+        <td>✓</td><td>✓</td><td>✓</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>CHAPA-2026-004</td>
+        <td>Sen. Wyden (OR)</td>
+        <td><span class="badge badge-red">1</span></td>
+        <td>✓</td><td>✓</td><td>✓</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>CHAPA-2026-005</td>
+        <td>Sen. Lee (UT)</td>
+        <td><span class="badge badge-red">1</span></td>
+        <td>✓</td><td>✓</td><td>✓</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>CHAPA-2026-006</td>
+        <td>Rep. Nadler (NY)</td>
+        <td><span class="badge badge-red">1</span></td>
+        <td>✓</td><td>✓</td><td>✓</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>CHAPA-2026-007</td>
+        <td>Rep. Davidson (OH)</td>
+        <td><span class="badge badge-gold">2</span></td>
+        <td>✓</td><td>✓</td><td>✓</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>CHAPA-2026-008</td>
+        <td>Rep. Lofgren (CA)</td>
+        <td><span class="badge badge-gold">2</span></td>
+        <td>✓</td><td>✓</td><td>✓</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>CHAPA-2026-009</td>
+        <td>Sen. Paul (KY)</td>
+        <td><span class="badge badge-gold">2</span></td>
+        <td>✓</td><td>✓</td><td>✓</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>CHAPA-2026-010</td>
+        <td>Rep. Massie (KY)</td>
+        <td><span class="badge badge-gold">2</span></td>
+        <td>✓</td><td>✓</td><td>✓</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>CHAPA-2026-011</td>
+        <td>Sen. Warren (MA)</td>
+        <td><span class="badge badge-gold">2</span></td>
+        <td>✓</td><td>✓</td><td>✓</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr style="font-style:italic; color:#aaa;">
+        <td>CHAPA-2026-012+</td>
+        <td>[Tier 3 targets — add rows]</td>
+        <td><span class="badge badge-green">3</span></td>
+        <td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note-box">
+    <strong>Response type codes:</strong> ACK = form acknowledgment only · SUB = substantive response from staff · CALL = office called to discuss · INTRO = expressed intent to introduce or co-sponsor · IGN = no response within 30 days · FOIA = FOIA filed on day 60
+  </div>
+</div>
+
+<!-- DOCUMENT 4: 30-DAY FOLLOW-UP SEQUENCE -->
+<div class="page">
+  <div class="doc-header">
+    <div class="doc-label">Exhibit D · Mass Submission Protocol</div>
+    <div class="doc-title">30-DAY FOLLOW-UP SEQUENCE</div>
+    <div class="doc-sub">Execute this sequence from submission date · Do not skip steps · The sequence is the pressure</div>
+  </div>
+
+  <div class="sequence-block">
+    <div class="day-label">Day 0 — Submission Day</div>
+    <div class="action-item">Send fax to all Tier 1 and Tier 2 targets simultaneously (same window, same day)</div>
+    <div class="action-item">Drop certified mail packages at post office for all Tier 1 and Tier 2 targets</div>
+    <div class="action-item">Submit web contact forms for all Tier 1 and Tier 2 targets</div>
+    <div class="action-item">Log each submission in the Submission Log with timestamp and delivery confirmation number</div>
+    <div class="action-item">Post on public record: "CHAPA submitted to [X] members of Congress on [date]. Watching the clock."</div>
+  </div>
+
+  <div class="sequence-block">
+    <div class="day-label">Day 3 — Tier 3 Submission</div>
+    <div class="action-item">Send fax, certified mail, and web form to all Tier 3 targets</div>
+    <div class="action-item">Update submission log</div>
+    <div class="action-item">Note publicly: "CHAPA now submitted to [X] members. Tier 1 response window: [date]."</div>
+  </div>
+
+  <div class="sequence-block">
+    <div class="day-label">Day 10 — First Follow-Up</div>
+    <div class="action-item">Call the DC office of each Tier 1 target. Ask to speak with the Legislative Correspondent by name where known. Confirm receipt. Note name of person you spoke with in the log.</div>
+    <div class="action-item">Script: "I'm [Name] from [City, NM]. I submitted a citizen petition on [date] — the Citizen's Hardware and Airspace Protection Act. I'm calling to confirm receipt and ask if the LC has had a chance to review it." Nothing more. Record the response verbatim.</div>
+  </div>
+
+  <div class="sequence-block">
+    <div class="day-label">Day 20 — Second Follow-Up</div>
+    <div class="action-item">Send a one-paragraph follow-up fax to all non-responding Tier 1 and Tier 2 offices. Text: "This is a follow-up to petition CHAPA-2026-[###] submitted on [date]. Ten days remain in the 30-day response window. The petition has now been submitted to [X] congressional offices. I look forward to your response."</div>
+    <div class="action-item">Update submission log with follow-up timestamp</div>
+  </div>
+
+  <div class="sequence-block">
+    <div class="day-label">Day 30 — Response Deadline</div>
+    <div class="action-item">Compile the leaderboard: who responded (and how), who has not</div>
+    <div class="action-item">Publish the leaderboard publicly with office names and response status</div>
+    <div class="action-item">Send a final one-paragraph fax to all non-responding offices: "As of today, your office has not responded to petition CHAPA-2026-[###]. This is the final notification before a FOIA request is filed for your office's petition log. That request will be filed in 30 days."</div>
+  </div>
+
+  <div class="sequence-block">
+    <div class="day-label">Day 60 — FOIA Filing Day</div>
+    <div class="action-item">File FOIA requests with each non-responding office using the template below</div>
+    <div class="action-item">Publish confirmation of FOIA filings publicly</div>
+    <div class="action-item">Contact local news outlets in the district of each non-responding member with the leaderboard and the FOIA confirmation</div>
+  </div>
+
+  <h2>FOIA REQUEST TEMPLATE</h2>
+
+  <div class="foia-template">
+    <p>[Your Name]<br>[Address]<br>[Date]</p>
+
+    <p>FOIA Officer<br>Office of Senator/Representative [Name]<br>[Address]</p>
+
+    <p>Re: Freedom of Information Act Request — Petition Log and Correspondence Records</p>
+
+    <p>Pursuant to the Freedom of Information Act, 5 U.S.C. § 552, I hereby request copies of all records in the possession of this office relating to:</p>
+
+    <p>(1) Any log, database, spreadsheet, or tracking system maintained by this office for the purpose of recording, categorizing, or tracking citizen petitions or constituent correspondence received during the period [start date] through [end date];</p>
+
+    <p>(2) All records reflecting the receipt, routing, disposition, or response to a citizen petition identified as "CHAPA-2026-[###]," submitted by [Your Name] on [submission date], relating to the Citizen's Hardware and Airspace Protection Act;</p>
+
+    <p>(3) Any policy, procedure, guidance, or instruction governing how this office processes, categorizes, or disposes of citizen petitions.</p>
+
+    <p>I am requesting a fee waiver on the basis that disclosure of these records is in the public interest. I am a private citizen with no commercial interest in these records. If a fee waiver is not granted, please notify me before incurring fees in excess of $25.00.</p>
+
+    <p>I expect a response within 20 business days as required by statute.</p>
+
+    <p>Respectfully,<br>[Your Name]<br>[Address]<br>[Phone]<br>[Email]</p>
+  </div>
+
+  <div class="note-box">
+    <strong>On the leaderboard:</strong> The public petition response tracker does not require a website. A publicly shared Google Sheet, a post on a community forum, or a letter to the editor of your local paper citing "as of [date], the following members have not responded to a formal citizen petition" is sufficient to create public record and local news interest. The goal is not viral — it is documented.
+  </div>
+
+</div>
+
+</body>
+</html>
