@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gap Analysis Exhibit – CHAPA Loophole Closure Map</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@700&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f4f0e8;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 15px;
+    color: #1a1a1a;
+    line-height: 1.7;
+    padding: 40px 20px;
+  }
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #fdfaf4;
+    border: 1px solid #d4c9b0;
+    padding: 60px 70px;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+  }
+  .doc-header {
+    text-align: center;
+    border-bottom: 3px double #8b7355;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .doc-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #8b7355; margin-bottom: 6px; }
+  .doc-title { font-family: 'Cinzel', serif; font-size: 17px; font-weight: 700; line-height: 1.4; }
+  .doc-sub { font-style: italic; font-size: 13px; color: #666; margin-top: 6px; }
+  .intro { font-size: 14px; color: #444; margin-bottom: 28px; line-height: 1.8; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    font-size: 13.5px;
+  }
+  thead tr {
+    background: #2c3e50;
+    color: #fff;
+  }
+  thead th {
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  tbody tr { border-bottom: 1px solid #e0d8c8; }
+  tbody tr:nth-child(even) { background: #f7f4ee; }
+  tbody tr:hover { background: #ede8dc; }
+  td { padding: 12px 14px; vertical-align: top; line-height: 1.6; }
+  .birdie-name { font-weight: 600; color: #1a1a1a; }
+  .loophole-text { color: #444; font-size: 13px; }
+  .section-badge {
+    display: inline-block;
+    background: #2c5f2e;
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .legal-cite { font-style: italic; color: #666; font-size: 12px; margin-top: 4px; }
+  .closure-text { font-size: 13px; color: #333; }
+  .status-closed {
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: #2c5f2e;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  .summary-box {
+    background: #f0ebe0;
+    border: 1px solid #d4c9b0;
+    padding: 20px 24px;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  .summary-box strong { display: block; margin-bottom: 8px; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: #8b7355; }
+  @media print {
+    body { background: #fff; padding: 0; font-size: 11px; }
+    .page { box-shadow: none; border: none; padding: 0.5in 0.7in; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-label">Supporting Exhibit A &nbsp;·&nbsp; Citizen's Hardware &amp; Airspace Protection Act</div>
+    <div class="doc-title">LOOPHOLE CLOSURE MAP — ALL 15 SURVEILLANCE BIRDIES</div>
+    <div class="doc-sub">Each documented loophole mapped to its closing bill section, legal source, and operative statutory change</div>
+  </div>
+
+  <p class="intro">The following table identifies each of the fifteen documented surveillance loopholes ("birdies") drawn from federal court decisions, FCC rulings, Congressional testimony, and investigative reporting. For each loophole, this exhibit identifies the legal authority that created it, the specific section of the Citizen's Hardware &amp; Airspace Protection Act that closes it, and the operative legal change effected by that section. All fifteen loopholes are closed by the attached bill.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:5%">#</th>
+        <th style="width:18%">Loophole</th>
+        <th style="width:22%">How It Works / Why It Survives</th>
+        <th style="width:18%">Legal Source</th>
+        <th style="width:10%">Closed By</th>
+        <th style="width:27%">How the Bill Closes It</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1</td>
+        <td><span class="birdie-name">Stingray Pen Register Loophole</span></td>
+        <td class="loophole-text">Law enforcement deploys cell-site simulators under a pen register order — a sub-probable-cause standard — forcing all nearby phones to reveal identity and location.</td>
+        <td><div class="legal-cite">18 U.S.C. §§ 3121–3127 (Pen Register Act); <em>United States v. Diggs</em>, 5th Cir. 2022</div></td>
+        <td><span class="section-badge">§ 8</span></td>
+        <td class="closure-text">Prohibits CSS device deployment without a probable-cause warrant. Explicitly bars pen register orders as authorization. Requires mandatory real-time purge of all non-target data. Criminal penalty for willful violation.</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td><span class="birdie-name">Unencrypted Satellite Downlink</span></td>
+        <td class="loophole-text">Carriers transmit calls and texts over satellite segments without encryption, making interception trivially easy with commodity equipment. No current federal standard requires satellite-segment encryption.</td>
+        <td><div class="legal-cite">47 C.F.R. Part 25 (satellite rules); no FCC encryption mandate for mobile satellite backhaul</div></td>
+        <td><span class="section-badge">§ 7(c)</span></td>
+        <td class="closure-text">Mandates end-to-end or transport-layer encryption across all network segments including satellite downlinks within 3 years. FCC required to promulgate minimum encryption standards within 1 year.</td>
+      </tr>
+
+      <tr>
+        <td>3</td>
+        <td><span class="birdie-name">Predictive Policing Algorithm</span></td>
+        <td class="loophole-text">DOJ-funded programs use carrier-sourced data to generate suspicion scores for individuals who have not committed a crime. Framed as research, not surveillance — no Fourth Amendment review required.</td>
+        <td><div class="legal-cite">DOJ Predictive Policing grants; no federal statutory prohibition; <em>Loomis v. Wisconsin</em>, Wis. Sup. Ct. 2016</div></td>
+        <td><span class="section-badge">§ 10(c)</span></td>
+        <td class="closure-text">Flat prohibition on any federal or federally-funded program that generates risk scores from carrier or broker data for non-targeted individuals. Prohibition applies regardless of whether data was lawfully obtained or program is labeled "research."</td>
+      </tr>
+
+      <tr>
+        <td>4</td>
+        <td><span class="birdie-name">Tower Under 60 Feet</span></td>
+        <td class="loophole-text">FCC registration (ASR) only required above 200 feet. Small cells — many capable of logging nearby device identifiers — are deployed with no public notice, no registry, no accountability.</td>
+        <td><div class="legal-cite">47 C.F.R. § 17.4 (ASR exemptions); FCC Small Cell Order, 2018 (83 FR 51867)</div></td>
+        <td><span class="section-badge">§ 9(a)-(b)</span></td>
+        <td class="closure-text">Requires registration of all communications infrastructure above 10 feet, including GPS coordinates, owner identity, frequency bands, data capabilities, and third-party access. Public registry updated within 72 hours. $50,000/day penalty per unregistered device.</td>
+      </tr>
+
+      <tr>
+        <td>5</td>
+        <td><span class="birdie-name">Geofence Dragnet</span></td>
+        <td class="loophole-text">Warrants sweep location data for every device in a geographic area, capturing 99.9% innocent people. Courts uphold under third-party doctrine because data is "voluntarily shared" with Google or carriers.</td>
+        <td><div class="legal-cite"><em>United States v. Chatrie</em>, 4th Cir. 2022; <em>In re Search of Info. Stored at Google</em>, D.D.C. 2020</div></td>
+        <td><span class="section-badge">§ 4(c)</span></td>
+        <td class="closure-text">Geofence warrants not tailored to a named individual are void ab initio. Requires particularized suspicion for each device sought. Eliminates area-sweep warrants as a class.</td>
+      </tr>
+
+      <tr>
+        <td>6</td>
+        <td><span class="birdie-name">Third-Party Metadata Free-for-All</span></td>
+        <td class="loophole-text">Third-Party Doctrine holds that data shared with a carrier — call logs, connection records — has no Fourth Amendment protection. <em>Carpenter</em> cracked this for location but lower courts still apply it broadly to non-location metadata.</td>
+        <td><div class="legal-cite"><em>Smith v. Maryland</em>, 442 U.S. 735 (1979); <em>Carpenter v. United States</em>, 585 U.S. 296 (2018)</div></td>
+        <td><span class="section-badge">§ 4(a)-(b)</span></td>
+        <td class="closure-text">Statutory recognition of reasonable expectation of privacy in all electronic data transmitted to a carrier. Transmission to a service provider does not constitute voluntary relinquishment of privacy rights. Eliminates Third-Party Doctrine for electronic data by statute.</td>
+      </tr>
+
+      <tr>
+        <td>7</td>
+        <td><span class="birdie-name">Data Broker Resale Pipeline</span></td>
+        <td class="loophole-text">Government purchases location and association data from commercial brokers — bypassing <em>Carpenter</em> entirely because courts treat the transaction as commercial, not a "search."</td>
+        <td><div class="legal-cite"><em>Carpenter</em>, 585 U.S. 296; <em>United States v. Moore-Bush</em>, 1st Cir. 2022; Senate Judiciary testimony, 2023</div></td>
+        <td><span class="section-badge">§ 3</span></td>
+        <td class="closure-text">Federal agencies banned from purchasing Protected Communications Data without a warrant. Data brokers prohibited from selling to federal government without verifying a valid warrant. $100,000/person/transaction civil penalty; 10-year felony for willful violation.</td>
+      </tr>
+
+      <tr>
+        <td>8</td>
+        <td><span class="birdie-name">CALEA Encrypted Backdoor</span></td>
+        <td class="loophole-text">FBI interprets CALEA as requiring carriers to maintain the ability to decrypt any communication. The 2025 FCC reversed prior clarification, leaving the backdoor mandate ambiguous and actionable.</td>
+        <td><div class="legal-cite">47 U.S.C. §§ 1001–1010 (CALEA); FCC Docket 21-232 (2025 reversal)</div></td>
+        <td><span class="section-badge">§ 5(b)</span></td>
+        <td class="closure-text">Explicit statutory prohibition: CALEA may not be construed to require weakening or circumventing end-to-end encryption, or retaining decryptable copies of user-encrypted communications. No ambiguity remains.</td>
+      </tr>
+
+      <tr>
+        <td>9</td>
+        <td><span class="birdie-name">Private Spyware Ecosystem</span></td>
+        <td class="loophole-text">NSO Group, Intellexa, and others sell zero-click spyware to governments. No federal law requires carriers to detect or block spyware traffic on their networks.</td>
+        <td><div class="legal-cite">No existing federal prohibition; PCLOB Report 2024; <em>Apple Inc. v. NSO Group</em>, N.D. Cal. 2021</div></td>
+        <td><span class="section-badge">§ 11(d)-(e)</span></td>
+        <td class="closure-text">Carriers strictly obligated to implement network-level detection and blocking of commercial spyware payloads. 24-hour subscriber notification upon detection. MMS/SS7 filtering mandated. FCC to set technical standards within 18 months. Prohibition on providing network access to foreign spyware deployments.</td>
+      </tr>
+
+      <tr>
+        <td>10</td>
+        <td><span class="birdie-name">§ 702 Backdoor Search</span></td>
+        <td class="loophole-text">FBI queries the FISA 702 database — collected targeting foreigners — for U.S. persons' communications without a warrant, calling it a "query" not a "search." 3.4 million such queries in 2021 alone.</td>
+        <td><div class="legal-cite">50 U.S.C. § 1881a (Section 702); FISC Opinion, Nov. 2022; PCLOB 702 Report 2023</div></td>
+        <td><span class="section-badge">§ 1, § 2</span></td>
+        <td class="closure-text">§ 1 repeals FISA and the 2008 Amendments Act in full, effective 180 days after enactment. § 2 independently requires a warrant for any query of any foreign intelligence database reasonably likely to return U.S. person data, and prohibits laundering the database through agency transfer.</td>
+      </tr>
+
+      <tr>
+        <td>11</td>
+        <td><span class="birdie-name">National Security Letter Gag Order</span></td>
+        <td class="loophole-text">FBI issues NSLs with permanent gag orders, no judicial review, no target notification — ever. Carrier cannot tell the customer their records were taken. No probable cause required.</td>
+        <td><div class="legal-cite">18 U.S.C. § 2709; 12 U.S.C. § 3414; <em>Doe v. Gonzales</em>, 2d Cir. 2006; <em>In re NSL</em>, N.D. Cal. 2013</div></td>
+        <td><span class="section-badge">§ 10(a)-(b)</span></td>
+        <td class="closure-text">NSLs now require judicial authorization upon specific articulable facts. Non-disclosure requirements auto-expire at 180 days without judicial renewal. Target must be notified within 30 days of expiration of any non-disclosure order.</td>
+      </tr>
+
+      <tr>
+        <td>12</td>
+        <td><span class="birdie-name">Infrastructure Data-Sharing Agreement</span></td>
+        <td class="loophole-text">Carriers sell location data to aggregators like LocationSmart, who resell to anyone. FCC fined carriers $200M in 2024 but the underlying statutory loophole enabling the sale remains open.</td>
+        <td><div class="legal-cite">FCC DA 24-170 (Feb. 2024, $200M fine); 47 U.S.C. § 222 (CPNI); <em>Carpenter</em>, 585 U.S. 296</div></td>
+        <td><span class="section-badge">§ 3, § 6</span></td>
+        <td class="closure-text">§ 3 prohibits sale of Protected Communications Data to the government without a warrant and defines Protected Communications Data to include all location data. § 6 creates private right of action for affected individuals with $10,000 minimum statutory damages per violation.</td>
+      </tr>
+
+      <tr>
+        <td>13</td>
+        <td><span class="birdie-name">Device Fingerprinting Zero-Click Attack</span></td>
+        <td class="loophole-text">Malicious MMS silently extracts a device fingerprint — OS, model, carrier — without user interaction. Carriers treat it as normal traffic; no detection or alerting obligation exists.</td>
+        <td><div class="legal-cite">No existing FCC technical standard for MMS payload filtering; SS7 vulnerability disclosed FCC 2016 (no remediation mandate issued)</div></td>
+        <td><span class="section-badge">§ 11(d)(3)</span></td>
+        <td class="closure-text">Carriers mandated to implement MMS and SS7 filtering sufficient to prevent protocol abuse for device identification or exploit delivery. FCC to establish minimum technical standards within 18 months. Carrier liability attaches for failure to implement upon standard issuance.</td>
+      </tr>
+
+      <tr>
+        <td>14</td>
+        <td><span class="birdie-name">Warrantless Border Device Search</span></td>
+        <td class="loophole-text">CBP and ICE conduct forensic device searches — full hard drive copies — at the border without any warrant or suspicion. Courts uphold under the border search exception.</td>
+        <td><div class="legal-cite"><em>Riley v. California</em>, 573 U.S. 373 (2014) (warrant required domestically); <em>United States v. Touset</em>, 11th Cir. 2018 (border exception applied to forensic searches)</div></td>
+        <td><span class="section-badge">§ 11(a)-(c)</span></td>
+        <td class="closure-text">Forensic examination of any electronic device at a port of entry requires a judicial warrant or express written consent. Manual review permitted on reasonable suspicion (written). All non-prosecutorial data from manual reviews purged within 72 hours.</td>
+      </tr>
+
+      <tr>
+        <td>15</td>
+        <td><span class="birdie-name">Metadata Retention Mandate</span></td>
+        <td class="loophole-text">FCC requires 18-month retention of call detail records. Law enforcement accesses these records without a warrant because they are framed as a billing requirement, not surveillance data.</td>
+        <td><div class="legal-cite">47 C.F.R. § 42.6 (18-month CDR retention); <em>Smith v. Maryland</em>, 442 U.S. 735 (1979); ECPA § 2703(d) (subpoena sufficient for stored records)</div></td>
+        <td><span class="section-badge">§ 9(c)</span></td>
+        <td class="closure-text">Carrier CDR retention capped at 90 days. Warrant required to access any CDR or message metadata — subpoena and administrative order explicitly insufficient. Billing data exception narrowly scoped to billing personnel only, warrant required for law enforcement access regardless of framing.</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="summary-box">
+    <strong>Coverage Summary</strong>
+    All 15 documented loopholes are closed by the attached bill. Sections 1–7 close loopholes 2, 5, 6, 7, 8, 10, and 12 (original framework). Sections 8–11 close loopholes 1, 3, 4, 9, 11, 13, 14, and 15 (gap-closing additions). No birdie survives the bill as drafted. Every closure is grounded in an identified legal authority and produces a cognizable statutory change enforceable under Section 6's private right of action.
+  </div>
+
+</div>
+</body>
+</html>
